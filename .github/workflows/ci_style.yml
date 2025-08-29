@@ -5,8 +5,8 @@ on:
     branches: [main]
 
 jobs:
-  style:
-    name: Style
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +18,12 @@ jobs:
         with:
           go-version: "1.23.0"
 
-      - name: Print Test
-        run: test -z $(go fmt ./...) 
+      - name: Print Go Test
+        run: go test -cover ./...
+
+    style:
+      name: Style
+
+      steps:
+        - name: Check Go synt
+          run: test -z $(go fmt ./...)
