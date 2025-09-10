@@ -17,9 +17,6 @@ import (
 	_ "github.com/tursodatabase/libsql-client-go/libsql"
 )
 
-
-
-
 type apiConfig struct {
 	DB *database.Queries
 }
@@ -92,9 +89,9 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + port,
-		Handler: router,
-		ReadHeaderTimeout: 5 * time.Second,
+		Addr:              ":" + port,
+		Handler:           router,
+		ReadHeaderTimeout: 5,
 	}
 
 	log.Printf("Serving on port: %s\n", port)
